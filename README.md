@@ -174,10 +174,10 @@ Mozilla Firefox&reg; を使う方が安全だそうです.
 セーブ時に落とした「断片化したオブジェクト」が,
 Microsoft Defender&reg; により「ウィルス ( virus )」だと誤判定される場合があるからです.
 特に [Copilot](https://copilot.microsoft.com/) との会話はそうなりやすいそうです.<br>
-詳しくは[この件に関する Copilot さんかの見解](./docs/Allow.Copilot.md)をご参照ください.
+詳しくは[この件に関する Copilot さんからの見解](./docs/Allow.Copilot.md)をご参照ください.
 <br><sup>(
 Microsoft&reg; のブラウザーで Microsoft&reg; の AI と会話すると, Microsoft&reg; の OS が誤検出しやすい,
-と憶えておけばリスクは避けられるかと.
+と憶えておけばこの面倒は避けられるかと.
 )</sup>
 
 
