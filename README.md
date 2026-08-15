@@ -168,24 +168,18 @@ AI が出力したムダにデカい HTML ファイルを小さくまとめま�
 あなたが違法行為を犯したとしても「知らんがな」と主張するものであります.
 
 > [!CAUTION]
-> ブラウザーに Microsoft&reg; Edge&reg; をご愛用のみなさまにお知らせです.<br>
-AI との会話をセーブするなら, ブラウザーには Microsoft&reg; Edge&reg; ではなく
+> ブラウザーに Microsoft Edge&reg; をご愛用のみなさまにお知らせです.<br>
+AI との会話をセーブするなら, ブラウザーには Microsoft Edge&reg; ではなく
 Mozilla Firefox&reg; を使う方が安全だそうです.
-セーブ時に落とした断片化したオブジェクトが,
-Microsoft&reg; Defender&reg; によりウィルス ( virus ) だと誤判定される場合があるからです.
+セーブ時に落とした「断片化したオブジェクト」が,
+Microsoft Defender&reg; により「ウィルス ( virus )」だと誤判定される場合があるからです.
+特に [Copilot](https://copilot.microsoft.com/) との会話はそうなりやすいそうです.<br>
+詳しくは[この件に関する Copilot さんかの見解](./docs/Allow.Copilot.md)をご参照ください.
+<br><sup>(
+Microsoft&reg; のブラウザーで Microsoft&reg; の AI と会話すると, Microsoft&reg; の OS が誤検出しやすい,
+と憶えておけばリスクは避けられるかと.
+)</sup>
 
-
-
-## [導入](#readme)
-
-そして……, 「ソースコードなんて読むヒマはない。とっとと現物を寄越せ！」とお考えのあなた,
-そういう考え方はいかがなものかと思うのですが,
-いちおう「インストーラー」として用意したものが,
-本ページ右上の「Releases」というコーナーに上げてあります.
-でも, それをダウンロードする前に,
-せめて[インストール手順](./Installation/README.md)をご一読ください.
-あなたの危険な行為を阻止すべく, 色々と Windows&reg; が説得してくるはずですが,
-どうやってそれらを振り切って初志貫徹するかが書いてあります.
 
 <div style="text-align: right;">
 In-house Tool / 家中 徹
