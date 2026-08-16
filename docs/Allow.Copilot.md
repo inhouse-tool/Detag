@@ -5,9 +5,9 @@ You said
 <table><tr><td>
 Web 上での AI との会話を .html にセーブすると,<br>
 セーブした途端に virus として検出されることがあるが, なぜ?</table>
-<h6>
+<h5>
 Copilot said
-</h6>
+</h5>
 <p>
 結論として 
 <strong>
@@ -304,9 +304,9 @@ You said
 </h5>
 <table><tr><td>
 本物の脅威ではなく「誤検知」という理解でいいのだな?</table>
-<h6>
+<h5>
 Copilot said
-</h6>
+</h5>
 <p>
 結論として 
 <strong>
@@ -610,9 +610,9 @@ You said
 </h5>
 <table><tr><td>
 この「誤検知」のリスクは browser によって異なるのか?</table>
-<h6>
+<h5>
 Copilot said
-</h6>
+</h5>
 <p>
 結論として 
 <strong>
@@ -1059,9 +1059,9 @@ You said
 </h5>
 <table><tr><td>
 この「誤検知」のリスクは Copilot と Gemini では異なるのか?</table>
-<h6>
+<h5>
 Copilot said
-</h6>
+</h5>
 <p>
 結論として 
 <strong>
@@ -1392,9 +1392,9 @@ You said
 Protection history を参照し,<br>
 最新の Threat blocked を一時的に Allow してから Save as を行い,<br>
 抽出を済ませてから Allowed threats から追い出して元に戻そうと思う.</table>
-<h6>
+<h5>
 Copilot said
-</h6>
+</h5>
 <p>
 結論として 
 <strong>
@@ -1707,9 +1707,9 @@ Detected: Trojan:Win32/MalUri.A!cl<br>
 となるが, 必ず<br>
 Status: Removed<br>
 となるので Restore や Open file location は使えない.</table>
-<h6>
+<h5>
 Copilot said
-</h6>
+</h5>
 <p>
 結論として 
 <strong>
@@ -2030,9 +2030,9 @@ You said
 1. Firefox は導入していない.<br>
 2. PDF の情報では使い物にならない.<br>
 3. 削除される前に拾っても, 拾ったファイルが検知されたとたんに削除されるのでは?</table>
-<h6>
+<h5>
 Copilot said
-</h6>
+</h5>
 <p>
 結論として 
 <strong>
@@ -2376,9 +2376,9 @@ B) ごく短時間だけ<br>
 Allow するリスクには甘んじるしかないと判断した.<br>
 <br>
 その判断を否定するなら, 何がどう危険なのか詳しく説明を.</table>
-<h6>
+<h5>
 Copilot said
-</h6>
+</h5>
 <p>
 その判断を「やむを得ない妥協」として理解することはできます。
 ただ、
@@ -2814,9 +2814,9 @@ Allowed threats から削除しても<br>
 「必ず元通り」とは言い切れない<br>
 というが, Antivirus としてそんなユルい仕様は許されないだろう.<br>
 その回答は事実なのか?</table>
-<h6>
+<h5>
 Copilot said
-</h6>
+</h5>
 <p>
 結論から言うと 
 <strong>
@@ -3094,9 +3094,9 @@ You said
 </h5>
 <table><tr><td>
 では, 「一時的な Allow」を, AI との会話の保存手段として認めるのだな?</table>
-<h6>
+<h5>
 Copilot said
-</h6>
+</h5>
 <p>
 結論として 
 <strong>
@@ -3435,9 +3435,9 @@ You said
 こちらも無制限にこんな手間のかかることをしようとは思わない.<br>
 「一時的な Allow」を行うのは, それが必要な Copilot との会話に限る.<br>
 それでよろしいか?</table>
-<h6>
+<h5>
 Copilot said
-</h6>
+</h5>
 <p>
 結論として 
 <strong>
@@ -3814,9 +3814,9 @@ You said
 前提の付け方がおかしい.<br>
 「私の条件下では」ではなく「Copilot との会話では」だ.<br>
 それなら誰にでも通用する一般的な前提と位置付けられるのではないか?</table>
-<h6>
+<h5>
 Copilot said
-</h6>
+</h5>
 <p>
 結論として 
 <strong>
@@ -4160,9 +4160,9 @@ You said
 Copilot との会話で Trojan:Win32/MalUri.A!cl の誤検出を目にする人は多いと思う.<br>
 それらの人々ためにもこの会話は公開しようと思う.<br>
 構わないか?</table>
-<h6>
+<h5>
 Copilot said
-</h6>
+</h5>
 <p>
 結論として 
 <strong>
@@ -4365,9 +4365,9 @@ You said
 </h5>
 <table><tr><td>
 いや, これでじゅうぶん. では!</table>
-<h6>
+<h5>
 Copilot said
-</h6>
+</h5>
 <p>
 了解した。
 あなたがここまで丁寧に検証し、筋道を立てて判断し、最後に「これで十分」と締めたなら、それでこの一連の議論は完結だ。
@@ -4378,3 +4378,19 @@ Copilot said
 </p>
 
 <hr>
+
+> [!NOTE]
+> 案の定この会話自体が誤検知されたので,
+実際に上述の方法 ( 一時的に threat を Allow する ) を用いてこのやり取りをファイル化しました.<br>
+<br>
+この Copilot は対話相手のプロファイルを心得てしゃべっているので,
+あちこちに「あなたならそう思うだろ」的な文脈が登場します.
+「Microsoft&reg; account も持っていない相手をどうやって識別してるんだ、おまえは?」<br>
+と小一時間ほど問い詰めたことがあるのですが,
+どうやらブラウザー経由でプロファイル的な「Copilot Memory」 ( 個人を特定できるわけではないが, その個人の方向性は区別できる )
+を
+[IndexedDB](https://www.google.com/search?q=IndexedDB)
+のかたちで出し入れしており,
+それに基づいてしゃべっている ( 生成する文章の文脈を絞っている ) らしいんです.<br>
+「Microsoft&reg; account さえ持ってなきゃこっちのもんだい。へへーん♪」<br>
+とか思っている方, あなたを知ろうとする Microsoft の努力はそんなもんではなさそうです.
