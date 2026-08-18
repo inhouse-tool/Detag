@@ -207,7 +207,7 @@ Copilot さんと同じになるよう目印のテキストを挟んでおきま
 		[Gemini 専用調整処理](#gemini-専用調整処理)を実施してから,
 		出力に `<h5>\r\nYou said\r\n</h5>\r\n` を追加.
 
-	* `data-key="aimhl"` の属性を含む場合は:<br>
+	* `data-key="aimhl"` または `data-subtree="aimfl"` の属性を含む場合は:<br>
 		* Gemini さんの回答文の始まりを示すので,<br>
 		出力に `<h6>\r\nGemini said\r\n</h6>\r\n` を追加.
 
@@ -223,9 +223,11 @@ Copilot さんと同じになるよう目印のテキストを挟んでおきま
 
 > [!TIP]
 > `data-key="aimhl"` の `aimhl` は自動生成された変数名などではなく,
-<b>AI</b> <b>M</b>essage <b>H</b>ead <b>L</b>ine という Gemini さん固有のキーワードで,
+<ins>AI</ins> <ins>M</ins>essage <ins>H</ins>ead <ins>L</ins>ine という Gemini さん固有のキーワードで,
 AI が生成したメッセージの開始点を示すマーカーだそうです.
-なので本アプリのようなスクレイピング処理での目印としてアテにしてもだいじょうぶだと,
+同じく `data-subtree="aimfl"` の `aimfl` は
+<ins>AI</ins> <ins>M</ins>essage <ins>F</ins>oot <ins>L</ins>ine だそうです.
+そんなわけで本アプリのようなスクレイピング処理での目印としてアテにしてもらってもだいじょうぶだと,
 Gemini さんご本人がおっしゃってました.
 
 #### Copilot・Gemini 共用処理:
@@ -348,7 +350,7 @@ Gemini さんご本人がおっしゃってました.
 > [!TIP]
 > リンクにもいろんなタイプがあって図解しないと解りにくいので, 実際のスナップショットを挟んでおきます.
 ![](../pics/Links.Gemini.png)
-<br>上の図で, <ins>Mermaid</ins> とあるのが文中の通常の `<a …>見出し</a>` によるリンク,<br>
+<br>上の図で, <ins>Mermaid</ins> とあるのが文中の通常の `<a …>`見出し`</a>` によるリンク,<br>
 真ん中下端に `Github +1` とあるのが「ソース・チップ」( source chips ) によるリンク,<br>
 右端で別枠に収まっているのが, 「サイテーション」( citations ) によるリンクということになります.
 <br><sup>( 
@@ -373,3 +375,17 @@ Gemini さんの場合は [Gemini 専用調整処理](#gemini-専用調整処理
 が, 何せ日進月歩で進む ( 仕様が変わる ) 入力を相手にしている処理なので,
 どこかで想定外の仕様変更にぶつかるかもしれません.
 そうした想定外には牛歩であっても追従していく方針ではあります.
+
+> [!TIP]
+> 「日進月歩」の例:
+> Citation からピックアップしたテキストは, 大きく見出しを, その下に小さく情報源を添えていました.
+> が, ある日突然順序が入れ替わっていたので, どこの不具合か調べてみたら,
+> 下記のようにそもそもの元ネタが順序を変えていたというオチでした.
+> <table>
+<tr>
+<td><img src="../pics/Citation.Old.png">
+<td><img src="../pics/Citation.New.png">
+<tr>
+<td align="center">2026年8月初頭の Citation 例<br>見出し, 概要, 情報源 の順で並んでいる.
+<td align="center">2026年8月中旬の Citation 例<br>情報源, 見出し, 概要 の順で並んでいる.
+</table>
