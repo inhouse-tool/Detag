@@ -40,21 +40,34 @@ AI が出力したムダにデカい HTML ファイルを小さくまとめま�
 で, そんなデカい `.html` ファイルから会話部分のテキストだけを選りすぐって,
 コンパクトにまとめたファイルにセーブし直してくれるのが本アプリです.
 
+下記の AI の出力に対応しています.
+
+| AI | サイト |
+| --- | --- |
+| Copilot | https://copilot.microsoft.com/ |
+| Gemini web app | https://gemini.google.com/ |
+| Google AI Overviews[^1] | https://www.google.com/ |
+
+[^1]: “[AI Overviews](https://en.wikipedia.org/wiki/AI_Overviews)”
+は Google で検索していると横から口を出してくるアレの正式名称です.<br>
+どこの AI かを名前に含めていないところが唯我独尊的な視野の狭さを感じますが,<br>
+そのまま呼ぶと混乱を招くので本アプリでは一貫して“*Google* AI Overviews”と呼ぶことにします.
+
 
 ## [効能](#readme)
 
 本アプリの機能はだいたいこんな感じです.
 
-* オリジナルの `.html` の中からあなたからの質問と AI からの回答のテキストだけをピックアップする.<br>
+* オリジナルの `.html` の中から, あなたからの質問と AI からの回答のテキストだけをピックアップする.<br>
 ( なので容量が激減する. )
 
 * テキスト以外に画像が挟まっていたとしても, それらは省略する.<br>
 ( なので画像などを収めている `_files` フォルダは削除して構わない. )
 
-* テキスト以外に挟まっている紹介記事のリンクは温存する.<br>
+* テキスト以外に挟まっていた紹介記事のリンクは, 全て温存する.<br>
 ( なので画像を削除したあとも, リンクをたどればまた画像は見られる. )
 
-* オリジナルの視覚効果頼りの表現を質実剛健なテキスト表現に変更する.<br>
+* オリジナルの視覚効果頼りの表現を, 質実剛健なテキスト表現に変更する.<br>
 ( なので <kbd>Ctrl</kbd>+<kbd>F</kbd> で検索とかしやすくなる. )
 
 * 一部が隠れた状態でセーブされたオリジナルでも, 全部読めるよう展開する.<br>
@@ -136,10 +149,8 @@ Microsoft Edge&reg; のように馬鹿げたサイズにはなりませんが,
 
 * 複数のファイルをつかんでいっぺんに Drop すると, 全部のファイルを取り扱います.
 * `.html` じゃないファイルを Drop しても無視します.
-* [bing](https://www.bing.com/) 在住の [Copilot](https://copilot.microsoft.com/) さんや
-[google](https://www.google.com) 在住の [Gemini](https://gemini.google.com/) さん
-のものではない
-`.html` を Drop しても無視します.
+* Copilot さんや Gemini さんのものではない
+`.html` を Drop してもなにもしません.
 
 
 ## [環境](#readme)
@@ -158,12 +169,13 @@ Microsoft Edge&reg; のように馬鹿げたサイズにはなりませんが,
 という懸念を Copilot さんと Gemini さんにぶつけてみたところ,
 返ってきた回答が以下の通りです.
 
-* [Copilot さんからの回答](./docs/Detag.Copilot.md)
-* [Gemini さんからの回答](./docs/Detag.Gemini.md)
+* [Copilot さんからの回答](./docs/Detag.Copilot.md) <sub>( 2026年8月現在 )</sub>
+* [Gemini web app さんからの回答](./docs/Detag.Gemini.md) <sub>( 2026年8月現在 )</sub>
+* [Google AI Overviews さんからの回答](./docs/Detag.Google.md) <sub>( 2026年8月現在 )</sub>
 
 アプリの公開は問題なさそうなのでこうして公開しています.
-
-抽出した情報の公開については両者とも注意事項があると仰せなので,
+<br>
+抽出した情報の公開については注意事項があると仰せなので,
 公開前に上記の回答をご一読ください.
 
 > [!IMPORTANT]
@@ -171,17 +183,15 @@ Microsoft Edge&reg; のように馬鹿げたサイズにはなりませんが,
 あなたが違法行為を犯したとしても「知らんがな」と主張するものであります.
 
 > [!CAUTION]
-> ブラウザーに Microsoft Edge&reg; をご愛用のみなさまにお知らせです.<br>
-AI との会話をセーブするなら, ブラウザーには Microsoft Edge&reg; ではなく
+> ブラウザーに Google Chrome&reg; や Microsoft Edge&reg; をご愛用のみなさまにお知らせです.<br>
+AI との会話をセーブするなら,
+ブラウザーには  Google Chrome&reg; や Microsoft Edge&reg; ( 同じ Chromium 系 ) ではなく
 Mozilla Firefox&reg; を使う方が安全だそうです.
 セーブ時に落とした「断片化したオブジェクト」が,
 Microsoft Defender&reg; により「脅威 ( threat )」だと誤判定される場合があるからです.
-特に [Copilot](https://copilot.microsoft.com/) との会話はそうなりやすいそうです.<br>
+特に [Copilot](https://copilot.microsoft.com/) との会話はそうなりやすいそうです.
+<sub>( 2026年8月現在 )</sub><br>
 詳しくは[この件に関する Copilot さんからの見解](./docs/Allow.Copilot.md)をご参照ください.
-<br><sup>(
-「Microsoft&reg; のブラウザーで Microsoft&reg; の AI と会話すると, Microsoft&reg; の OS が誤検出しやすい」
-と憶えておけばこの面倒は避けられるかと.
-)</sup>
 
 
 <div style="text-align: right;">
