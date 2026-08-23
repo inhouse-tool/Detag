@@ -1,4 +1,4 @@
-# Detag<br><sup><sub>Version 1.0.0.816</sub></sup>
+# Detag<br><sup><sub>Version 1.0.0.830</sub></sup>
 
 AI が出力したムダにデカい HTML ファイルを小さくまとめます.
 
@@ -10,7 +10,7 @@ AI が出力したムダにデカい HTML ファイルを小さくまとめま�
 <br>
 で, その会話がなかなか有用な展開になったので, 保存しておいたことってありませんか?
 <br>
-そして, その保存されたファイルのあまりのデカさに驚かれたことってありませんか?
+そして, その保存されたファイルのあまりのデカさに驚いたことってありませんか?
 
 それほど長時間会話を続けていた覚えはなくても,
 いざセーブしてみると,
@@ -27,6 +27,7 @@ AI が出力したムダにデカい HTML ファイルを小さくまとめま�
 ドライブの容量を無駄遣いして OneDrive&reg; の課金へと導くためでしょうか?
 いえ, そうではありません. いや, 全く否定できるかというと少し考え込んでしまいますが,
 そんなビジネス上の理由ではなく, 生成 AI のデータ表現上の理由があるんだそうです.
+おおざっぱに言うと
 
 * 動的な [DOM](https://ja.wikipedia.org/wiki/Document_Object_Model) を無理やり静的なスナップショットに落とし込むから
 
@@ -118,7 +119,7 @@ Microsoft Edge&reg; のように馬鹿げたサイズにはなりませんが,
 に落とす必要はない。」というのが本アプリのスタンスです.
 <br><sup>(
 本格的に [Markdown](https://ja.wikipedia.org/wiki/Markdown) に変換するとなると,
-「どの[方言](https://qiita.com/gaichi/items/1d41c48c60579df0aeec)で表現するか」という派閥論争に巻き込まれてまうんやで.
+「どの[方言](https://qiita.com/gaichi/items/1d41c48c60579df0aeec)で表現するか」という派閥論争に巻き込まれてまうっちゅうもんやし.
 )</sup>
 
 本アプリとしては同じ変換結果を
@@ -128,7 +129,8 @@ Microsoft Edge&reg; のように馬鹿げたサイズにはなりませんが,
 
 としてセーブしているだけです.
 <br><sup>(
-`.htm` という拡張子が古臭い表現であることは認めますが, オリジナルの `.html` を上書きしないために引っ張り出してきました.
+`.htm` という拡張子が[古臭い表現](https://ja.wikipedia.org/wiki/8.3形式)であることは認めますが,
+オリジナルの `.html` を上書きしないために引っ張り出してきました.
 )</sup>
 
 拡張子の前のファイル名はオリジナルと同じで,
@@ -146,9 +148,14 @@ Microsoft Edge&reg; のように馬鹿げたサイズにはなりませんが,
 1. `.md` か `.htm` かを選ぶ.
 1. 変換したい `.html` をダイアログに Drag & Drop する.
 1. ダイアログを閉じる.
+1. オリジナルの `.html` を削除する. ( 特に未練がなければ )
+1. `.html` に[接続](https://learn.microsoft.com/ja-jp/windows/win32/shell/manage#connected-files)していた `_files` も消えている. ( 特に削除したわけでもないのに )
+
+※ 上記 5. と 6. はお好みですが, やっておくと容量の節約になって OneDrive&reg; の課金を遠ざけられます.
+<sub>( まだ言うか. )</sub>
 
 * 複数のファイルをつかんでいっぺんに Drop すると, 全部のファイルを取り扱います.
-* `.html` じゃないファイルを Drop しても無視します.
+* `.html` じゃないファイルを Drop してもなにもしません.
 * Copilot さんや Gemini さんのものではない
 `.html` を Drop してもなにもしません.
 
@@ -183,9 +190,9 @@ Microsoft Edge&reg; のように馬鹿げたサイズにはなりませんが,
 あなたが違法行為を犯したとしても「知らんがな」と主張するものであります.
 
 > [!CAUTION]
-> ブラウザーに Google Chrome&reg; や Microsoft Edge&reg; をご愛用のみなさまにお知らせです.<br>
+> ブラウザーに Microsoft Edge&reg; や Google Chrome&reg; をご愛用のみなさまにお知らせです.<br>
 AI との会話をセーブするなら,
-ブラウザーには  Google Chrome&reg; や Microsoft Edge&reg; ( 同じ Chromium 系 ) ではなく
+ブラウザーには Microsoft Edge&reg; や Google Chrome&reg; ( 同じ Chromium 系 ) ではなく
 Mozilla Firefox&reg; を使う方が安全だそうです.
 セーブ時に落とした「断片化したオブジェクト」が,
 Microsoft Defender&reg; により「脅威 ( threat )」だと誤判定される場合があるからです.
