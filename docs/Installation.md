@@ -80,7 +80,7 @@
 しかし[ツールチップ](https://ja.wikipedia.org/wiki/ツールチップ)に出ている「組織が管理」って何なんですかね?
 特に組織に管理されている覚えは……
 はっ! あの Microsoft の悪口を書いているとどこからともなくやってくるという黒い服の二人組,
-M.I.B. を派遣してくるという噂の組織, Microsoft Intelligence Bureau が
+M.I.B. を派遣してくるという噂の組織, Microsoft Intelligence Bureau がこ
 </sub>
 
 そしてダウンロードが完了すると,
