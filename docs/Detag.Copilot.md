@@ -2,7 +2,7 @@
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 AI との会話を browser で Save as した .html ファイルがアホみたいにデカいので,<br>
 会話のテキストだけ抽出してコンパクトな .htm ファイルにまとめるツールを作った.<br>
 このアプリって, ソースコードで公開して問題ないのかな?<br>
@@ -392,11 +392,12 @@ Copilot が生成した著作権保護された文章の長文
 <ul>
 <li> <a target="_blank" href="https://ai-license-map.com/tools/copilot/">Microsoft Copilotの商用利用・権利条件｜AIライセンスマップ<br><sup>ai-license-map.com</sup></a></a>
 </ul>
+
 <hr>
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 いや, ソースコードを公開する際に,<br>
 上に出してもらった注意事項を添えておこうかと思って.<br>
 「会話を公開した実例」兼「会話を公開する際の注意事項」として.<br>
@@ -702,11 +703,12 @@ README の文章を整える
 <p>
 どれを進めたい。
 </p>
+
 <hr>
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 うん, よく解った. ではまた.</table>
 <h5>
 Copilot said

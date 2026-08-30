@@ -2,7 +2,7 @@
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 Web 上での AI との会話を .html にセーブするとアホみたいに容量を食うのはなぜ?</table>
 <h5>
 Gemini said
@@ -106,7 +106,7 @@ ChatGPTなどの設定画面にある「データをエクスポート」機能�
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 Web 上での AI との会話を .html にセーブするとアホみたいに容量を食うのは<br>
 動的な DOM を無理やり静的なスナップショットに落とし込むから?<br>
 </table>

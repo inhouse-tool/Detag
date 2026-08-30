@@ -2,7 +2,7 @@
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 Web 上での AI との会話を .html にセーブすると,<br>
 セーブした途端に virus として検出されることがあるが, なぜ?</table>
 <h5>
@@ -298,11 +298,12 @@ AI チャット UI の DOM が巨大化する理由
 <ul>
 <li> <a target="_blank" href="https://arxiv.org/html/2506.03656v1">Client-Side Zero-Shot LLM Inference for Comprehensive In-Browser URL Analysis<br><sup>arXiv.org</sup></a></a>
 </ul>
+
 <hr>
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 本物の脅威ではなく「誤検知」という理解でいいのだな?</table>
 <h5>
 Copilot said
@@ -604,11 +605,12 @@ AI チャットの DOM が保存時にどう壊れるかの構造解析
 <p>
 どれを深掘りしますか。
 </p>
+
 <hr>
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 この「誤検知」のリスクは browser によって異なるのか?</table>
 <h5>
 Copilot said
@@ -1053,11 +1055,12 @@ MalUri が壊れた HTML のどの部分を「悪性」と判断しているか
 <p>
 どれを解析しますか。
 </p>
+
 <hr>
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 この「誤検知」のリスクは Copilot と Gemini では異なるのか?</table>
 <h5>
 Copilot said
@@ -1382,11 +1385,12 @@ MalUri が壊れた HTML のどの部分を「悪性」と判断しているか
 <p>
 どちらを深掘りしますか。
 </p>
+
 <hr>
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 これからこの会話を Microsoft Edge で Save as するが,<br>
 誤検知された場合は Windows Security の Virus &amp; threat protection で<br>
 Protection history を参照し,<br>
@@ -1697,11 +1701,12 @@ Edge の Save-as が壊れた HTML を生成する理由を解析する
 <p>
 どれを進めますか。
 </p>
+
 <hr>
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 この場合, 決まって<br>
 Detected: Trojan:Win32/MalUri.A!cl<br>
 となるが, 必ず<br>
@@ -2022,11 +2027,12 @@ MalUri が壊れた HTML のどの部分を悪性と判断しているか特定
 <p>
 どれを進めますか。
 </p>
+
 <hr>
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 1. Firefox は導入していない.<br>
 2. PDF の情報では使い物にならない.<br>
 3. 削除される前に拾っても, 拾ったファイルが検知されたとたんに削除されるのでは?</table>
@@ -2365,11 +2371,12 @@ Edge の Save-as が壊れた DOM を生成する理由を解析
 <p>
 どれを解析しますか。
 </p>
+
 <hr>
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 こちらもやりたくてやっているわけではないが<br>
 A) Trojan:Win32/MalUri.A!cl だけを<br>
 B) ごく短時間だけ<br>
@@ -2805,11 +2812,12 @@ Firefox を 1 本だけ導入して “保存専用ブラウザ” にする
 <p>
 この 2 点だけは、頭の片隅に置いておいてもらえるといいかな、と思います。
 </p>
+
 <hr>
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 Allowed threats から削除しても<br>
 「必ず元通り」とは言い切れない<br>
 というが, Antivirus としてそんなユルい仕様は許されないだろう.<br>
@@ -3088,11 +3096,12 @@ Edge の Save-as が MalUri を誘発する理由
 <p>
 どれを続けますか。
 </p>
+
 <hr>
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 では, 「一時的な Allow」を, AI との会話の保存手段として認めるのだな?</table>
 <h5>
 Copilot said
@@ -3102,8 +3111,6 @@ Copilot said
 <strong>
 あなたの状況・制約・目的を総合すると、
 </strong>
-
-
 <strong>
 「AI との会話を保存するための一時的な Allow」は “現実的に許容できる運用” と認められる。
 </strong>
@@ -3427,11 +3434,12 @@ Edge の Save-as が MalUri を誘発する理由を特定する
 <p>
 どれでも続けられる。
 </p>
+
 <hr>
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 こちらも無制限にこんな手間のかかることをしようとは思わない.<br>
 「一時的な Allow」を行うのは, それが必要な Copilot との会話に限る.<br>
 それでよろしいか?</table>
@@ -3806,11 +3814,12 @@ Edge の Save-as が MalUri を誘発する理由を特定
 <p>
 どれでも続けられます。
 </p>
+
 <hr>
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 前提の付け方がおかしい.<br>
 「私の条件下では」ではなく「Copilot との会話では」だ.<br>
 それなら誰にでも通用する一般的な前提と位置付けられるのではないか?</table>
@@ -4152,11 +4161,12 @@ Edge の Save-as が壊れた DOM を生成する理由
 <p>
 どれでも続けられる。
 </p>
+
 <hr>
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 Copilot との会話で Trojan:Win32/MalUri.A!cl の誤検出を目にする人は多いと思う.<br>
 それらの人々ためにもこの会話は公開しようと思う.<br>
 構わないか?</table>
@@ -4359,11 +4369,12 @@ Allow を使う場合は MalUri.A!cl に限定し、
 が必要なら
 すぐに作成できます。
 </p>
+
 <hr>
 <h5>
 You said
 </h5>
-<table><tr><td>
+<table style="width: 100%; display: table;"><tr><td>
 いや, これでじゅうぶん. では!</table>
 <h5>
 Copilot said
