@@ -67,9 +67,9 @@ AIとの会話が長くなると、画面上の表示要素（専門用語でDOM
 <a target="_blank" href="https://ai-rise.net/column/chatgpt-slow-when-long/"><sup>ai-rise.net</sup></a>
 <p></p>
 <p>
-<span style="font-size: 1.3rem;">
+<div style="font-size: 1.3rem;">
 💡 解決策：アホみたいな容量を防ぐには？
-</span<p><p>
+</div><p><p>
 もし「会話のテキストだけ」をスマートに保存したい場合は、以下の方法がおすすめです。
 <p></p>
 <ul>
