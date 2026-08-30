@@ -241,7 +241,6 @@ Microsoft Defender&reg; により「脅威 ( threat )」だと誤判定される
 <sub>( 2026年8月現在 )</sub><br>
 詳しくは[この件に関する Copilot さんからの見解](./docs/Allow.Copilot.md)をご参照ください.
 
-
 <div style="text-align: right;">
 In-house Tool / 家中 徹
 </div>
