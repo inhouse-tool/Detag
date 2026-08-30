@@ -62,7 +62,8 @@ CDetagDlg::OnDropFiles( HDROP hDrop )
 		TCHAR	szFile[MAX_PATH];
 		DragQueryFile( hDrop, iFile, szFile, _countof( szFile ) );
 		CString	strFile( szFile );
-		if	( !strFile.Right( 5 ).CompareNoCase( L".html" ) )
+		if	( !strFile.Right( 5 ).CompareNoCase( L".html" ) ||
+			  !strFile.Right( 4 ).CompareNoCase( L".htm"  )    )
 			DetagHTML( strFile );
 	}
 
@@ -182,10 +183,13 @@ CDetagDlg::DetagHTML( CString strFile )
 
 	CDetag	detag;
 	CString	strOut = detag.Detag( strHTML );
+	if	( strOut.IsEmpty() )
+		return;
 
 	// Make a target file name and adjust the image.
 
 	int	x = strFile.ReverseFind( '.' );
+	CString	strExt = strFile.Mid( x );
 	strFile = strFile.Left( x );
 
 	// Select the target file type.
@@ -198,7 +202,7 @@ CDetagDlg::DetagHTML( CString strFile )
 		strFile += L".md";
 	}
 	else if	( iFile == FILE_HTML ){
-		strFile += L".htm";
+		strFile += ( strExt.CompareNoCase( L".htm" ) == 0 )? L".html": L".htm";
 
 		LPCTSTR	pszHTMLheader = L""
 			"<!DOCTYPE html>\r\n"

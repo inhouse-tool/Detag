@@ -40,7 +40,7 @@ CDetag::DetagAIs( CString strHTML )
 	// Determine which AI the input is from.
 
 	enum	{ none = 0, copilot, gemini, google }
-		eAI;
+		eAI = none;
 	{
 		int	x  = strHTML.Find( L"<body" );
 		if	( x < 0 )
@@ -49,11 +49,23 @@ CDetag::DetagAIs( CString strHTML )
 		CString	strHead = strHTML.Left( x );
 		strHTML.Delete( 0, x );
 
-		eAI =
-			( strHead.Find( L"https://copilot.microsoft.com" ) >= 0 )?	copilot:
-			( strHead.Find( L"https://support.google.com" )    >= 0 )?	google:
-			( strHead.Find( L"https://gemini.google.com" )     >= 0 )?	gemini:
-											none;
+		int	xCopilot = strHead.Find( L"https://copilot.microsoft.com" );
+		int	xGemini  = strHead.Find( L"https://gemini.google.com" );
+		int	xGoogle  = strHead.Find( L"https://www.google.com" );
+
+		if	( xCopilot < 0 )
+			xCopilot = INT_MAX;
+		if	( xGemini  < 0 )
+			xGemini  = INT_MAX;
+		if	( xGoogle  < 0 )
+			xGoogle  = INT_MAX;
+
+		x = min( min( xCopilot, xGemini ), xGoogle );
+		if	( x != INT_MAX )
+			eAI =	( x == xCopilot )?	copilot:
+				( x == xGemini )?	gemini:
+				( x == xGoogle )?	google:
+							none;
 		if	( eAI == none )
 			return	strOut;
 	}
@@ -239,11 +251,33 @@ CDetag::DetagGemini( CString strHTML, CString strElement, CString strTag, CStrin
 
 	// Gemini's answer: Show the first paragraph as an answer.
 
-	else if	( strElement == L"h2" ){
+	else if	( strElement == L"h2" ||	//OLD:
+		  strElement == L"h6" ){	//NEW:
 		args.xNext = strHTML.Find( L"<p", args.x );
 
 		strOut += L"<h6>\r\nGemini said\r\n</h6>\r\n";
 		TrimQandA( strOut );
+	}
+
+	// User's question: Take a query text behind "<span>Your prompt</span>".
+
+	else if	( strElement == L"h5" ){
+		args.xNext = strHTML.Find( L"<h6", args.x );
+
+		CString	strQuery;
+		CString	strH5 = strHTML.Mid( args.x, args.xNext-args.x );
+		for	( int x0 = 0; x0 >= 0; ){
+			x0 = strH5.Find( L"<p", x0 );
+			if	( x0 < 0 )
+				break;
+			int	x1 = strH5.Find( '>', x0 );
+			int	x2 = strH5.Find( '<', ++x1 );
+			CString	strP = strH5.Mid( x1, x2-x1 );
+			strQuery += strP + L"\r\n";
+			x0 = x2;
+		}
+		strOut += L"<hr>\r\n<h5>\r\nYou said\r\n</h5>\r\n";
+		strOut += strQuery;
 	}
 
 	// <div ...>: Delete the tag.
@@ -257,7 +291,7 @@ CDetag::DetagGemini( CString strHTML, CString strElement, CString strTag, CStrin
 		if	( args.nOpenDiv )
 			args.nOpenDiv++;
 
-		// Heading: Break line and set larger.
+		//OLD: Heading: Break line and set larger.
 
 		else if	( strTag.Find( L"role=\"heading\"" ) >= 0 ){
 
@@ -319,6 +353,12 @@ CDetag::DetagGoogle( CString strHTML, CString strElement, CString strTag, CStrin
 			args.bOut = true;
 	}
 
+	// <h3> a decolated text of query from the user: Remove whole <h3>.
+
+	else if	( strElement == L"h3" ){
+		args.xNext = SkipBranch( strHTML, args.x, L"h3" );
+	}
+
 	// <div ...>: Delete the tag.
 
 	else if	( strElement == L"div" ){
@@ -355,7 +395,7 @@ CDetag::DetagGoogle( CString strHTML, CString strElement, CString strTag, CStrin
 
 		else if	( strTag.Find( L"role=\"heading\"" ) >= 0 ){
 
-			// Unnumbered heading ( for Gemini ):
+			// Unnumbered heading ( for Google ):
 
 			if	( strTag.Find( L"aria-level=\"3\"" ) >= 0 ){
 				if	( !strOut.IsEmpty() )
@@ -366,7 +406,7 @@ CDetag::DetagGoogle( CString strHTML, CString strElement, CString strTag, CStrin
 				}
 			}
 
-			// Numbered heading ( for Gemini ):
+			// Numbered heading ( for Google ):
 
 			else if	( strTag.Find( L"aria-level=\"4\"" ) >= 0 ){
 				if	( args.bOut )
@@ -374,6 +414,15 @@ CDetag::DetagGoogle( CString strHTML, CString strElement, CString strTag, CStrin
 			}
 
 			// Other ARIA Levels in headings are not in Google AI Overviews ( for now ).
+		}
+
+		// AI Mode Container: Show as an answer.
+
+		else if	( strTag.Find( L"data-subtree=\"aimc\"" ) >= 0 ){
+			if	( !args.bAnswered ){
+				strOut += L"<h6>\r\nGoogle said\r\n</h6>\r\n";
+				args.bAnswered = true;
+			}
 		}
 	}
 
@@ -401,10 +450,10 @@ CDetag::DetagGoogle( CString strHTML, CString strElement, CString strTag, CStrin
 			}
 		}
 
-		// AI Message HeadLine: Show as an answer.
+		//OLD: AI Message HeadLine: Show as an answer.
 
 		if	( strTag.Find( L"data-key=\"aimhl\"" ) >= 0 ||
-				strTag.Find( L"data-subtree=\"aimfl\"" ) >= 0 ){
+			  strTag.Find( L"data-subtree=\"aimfl\"" ) >= 0 ){
 			if	( !args.bAnswered ){
 				strOut += L"<h6>\r\nGoogle said\r\n</h6>\r\n";
 				args.bAnswered = true;
@@ -776,6 +825,9 @@ CDetag::TrimGoogle( CString& strOut, CString strPart )
 			x1 += 2;
 			x2 = strLink.Find( L"\"", x1+1 );
 			CString	strTitle = strLink.Mid( x1, x2-x1 );
+			x1 = strTitle.Find( L"\xff08" );	// Google uses U+FF08 FULLWIDTH LEFT PARENTHESIS
+			if	( x1 >= 0 )
+				strTitle = strTitle.Left( x1 );
 			x1 = strTitle.Find( L" (" );
 			if	( x1 >= 0 )
 				strTitle = strTitle.Left( x1 );
@@ -1158,10 +1210,11 @@ CDetag::IsTagToKeep( CString strElement )
 	static	LPCTSTR	apchTags[] = {
 			L"a",
 			L"b", L"strong", L"ins", L"sup", L"sub",
+			L"blockquote",
 			L"br", L"p",
 			L"code", L"pre",
 			L"div", L"span",
-			L"h1", L"h2", L"h3", L"h5",
+			L"h1", L"h2", L"h3", L"h5", L"h6",
 			L"li", L"ol", L"ul",
 			L"table", L"tr", L"td", L"th", L"thead", L"tbody", L"tfoot", L"caption",
 			L"textarea",
