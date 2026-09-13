@@ -1,4 +1,4 @@
-# Detag<br><sup><sub>Version 1.0.0.830</sub></sup>
+# Detag<br><sup><sub>Version 1.0.1.913</sub></sup>
 
 AI が出力したムダにデカい HTML ファイルを小さくまとめます.
 
