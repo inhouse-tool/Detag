@@ -201,12 +201,22 @@ CDetag::DetagCopilot( CString strHTML, CString strElement, CString strTag, CStri
 	// <div ...>: Delete the tag.
 
 	else if	( strElement == L"div" ){
-		args.xNext = SeekTag( strHTML, args.x, L">" );
 
-		// While a <div> is open: Nest one more.
+		// "Microsoft Advertising": Skip it.
 
-		if	( args.nOpenDiv )
-			args.nOpenDiv++;
+		if	( strTag.Find( L"data-ads-rg" ) >= 0 )
+			args.xNext = SkipBranch( strHTML, args.x, L"div" );
+
+		// Others: Leave it.
+
+		else{
+			args.xNext = SeekTag( strHTML, args.x, L">" );
+
+			// While a <div> is open: Nest one more.
+
+			if	( args.nOpenDiv )
+				args.nOpenDiv++;
+		}
 	}
 
 	// <span ...>:  Delete the tag.
@@ -365,7 +375,8 @@ CDetag::DetagGoogle( CString strHTML, CString strElement, CString strTag, CStrin
 
 		// Hidden style: Remove whole <div>.
 
-		if	( strTag.Find( L"style=\"display: none\"" ) >= 0 )
+		if	( strTag.Find( L"style=\"display: none" ) >= 0 ||
+			  strTag.Find( L"style=\"display:none"  ) >= 0 )
 			args.xNext = SkipBranch( strHTML, args.x, L"div" );
 
 		// Share public link: Remove whole <div>.
@@ -376,6 +387,11 @@ CDetag::DetagGoogle( CString strHTML, CString strElement, CString strTag, CStrin
 		// Button for interaction: Remove whole <div>.
 
 		else if	( strTag.Find( L"role=\"button\"" ) >= 0 )
+			args.xNext = SkipBranch( strHTML, args.x, L"div" );
+
+		// Semantics of status: Remove whole <div>.
+
+		else if	( strTag.Find( L"role=\"status\"" ) >= 0 )
 			args.xNext = SkipBranch( strHTML, args.x, L"div" );
 
 		// Hidden Accessible Rich Internet Applications: Remove whole <div>.
@@ -422,6 +438,37 @@ CDetag::DetagGoogle( CString strHTML, CString strElement, CString strTag, CStrin
 			if	( !args.bAnswered ){
 				strOut += L"<h6>\r\nGoogle said\r\n</h6>\r\n";
 				args.bAnswered = true;
+			}
+		}
+
+		// A <div> with <img> in the User's question: Skip the icon of the site.
+		// This insertion is cased by Google AI Overview when URLs are in the query text.
+
+		else if	( strHTML.Mid( args.xNext, 4 ) == L"<img" ){
+			int	xH5 = ReverseFind( strOut, L"<h5" );
+			int	xH6 = ReverseFind( strOut, L"<h6" );
+
+			// In a query text: Delete the parent <div> with the name of the site.
+
+			if	( xH5 > xH6 ){
+				int	x = ReverseFind( strHTML, L"<div", args.x-1 );
+				args.xNext = SkipBranch( strHTML, x, L"div" );
+			}
+		}
+
+		//TMP: A <div> with <svg> in the User's question: Skip "File deleted".
+		//TMP: This insertion is caused by a bug in Google AI Overviews.
+		//TMP: Feedback was sent. Wait for the fix. Then this logic may be removed.
+
+		else if	( strHTML.Mid( args.xNext, 4 ) == L"<svg" ){
+			int	xH5 = ReverseFind( strOut, L"<h5" );
+			int	xH6 = ReverseFind( strOut, L"<h6" );
+
+			// In a query text: Delete the parent <div> with "File deleted".
+
+			if	( xH5 > xH6 ){
+				int	x = ReverseFind( strHTML, L"<div", args.x-1 );
+				args.xNext = SkipBranch( strHTML, x, L"div" );
 			}
 		}
 	}
@@ -640,6 +687,8 @@ CDetag::DetagCommon( CString strHTML, CString strElement, CString strTag, CStrin
 					else
 						strTag.Empty();
 				}
+				else
+					strTag.Empty();
 			}
 
 			// Other tags: Remove them.
@@ -1103,20 +1152,6 @@ CDetag::TrimQuery( CString& strQuery )
 	}
 	strQuery.Trim();
 
-	// Remove "File deleted.".
-
-	for	( int x = 0;; x++ ){
-		LPCTSTR	pchComment = L"aka.ms";
-		int	cchComment = lstrlen( pchComment );
-
-		x = strQuery.Find( pchComment, x );
-		if	( x < 0 )
-			break;
-		int	x1 = x + cchComment;
-		int	x2 = strQuery.Find( L"\r\n", x1 );
-		strQuery.Delete( x, x2+2-x );
-	}
-
 	// Add <br> for each line.
 
 	for	( int x = 0;; ){
@@ -1246,6 +1281,8 @@ CDetag::SeekTag( CString strHTML, int iIndex, LPCTSTR pszTag )
 void
 CDetag::OptimizeHTML( CString& strOut )
 {
+	strOut.Replace( L"\\</", L"\\ </" );
+
 	strOut.Replace( L"<p></p>\r\n\r\n<p>", L"<p></p>\r\n" );
 	strOut.Replace( L"</ul>\r\n\r\n<p>",   L"</ul>\r\n" );
 	strOut.Replace( L"\r\n\r\n\r\n<p>",    L"\r\n<p>" );

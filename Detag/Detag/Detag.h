@@ -29,5 +29,5 @@ protected:
 
 		void	OptimizeHTML( CString& strOut );
 
-		int	ReverseFind( LPCTSTR pszBase,  LPCTSTR pszPattern, int iIndex = -1 );
+		int	ReverseFind( LPCTSTR pszBase, LPCTSTR pszPattern, int iIndex = -1 );
 };
