@@ -1,4 +1,4 @@
-# Detag<br><sup><sub>Version 1.0.1.913</sub></sup>
+# Detag<br><sup><sub>Version 1.0.2.923</sub></sup>
 
 AI が出力したムダにデカい HTML ファイルを小さくまとめます.
 
@@ -48,7 +48,7 @@ Google&reg; の [Gemini](https://gemini.google.com/) さんとか,<br>
 | --- | --- |
 | Copilot | https://copilot.microsoft.com/ |
 | Gemini web app | https://gemini.google.com/ |
-| Google AI Overviews[^1] | https://www.google.com/ |
+| *Google* AI Overviews[^1] | https://www.google.com/ |
 
 [^1]: “[AI Overviews](https://en.wikipedia.org/wiki/AI_Overviews)”
 は Google で検索していると横から口を出してくるアレの正式名称だそうです.<br>
