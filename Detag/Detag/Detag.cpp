@@ -261,7 +261,7 @@ CDetag::DetagGemini( CString strHTML, CString strElement, CString strTag, CStrin
 
 	// Gemini's answer: Show the first paragraph as an answer.
 
-	else if	( strElement == L"h2" ||	//OLD:
+	else if	( //rElement == L"h2" ||	//OLD:
 		  strElement == L"h6" ){	//NEW:
 		args.xNext = strHTML.Find( L"<p", args.x );
 
