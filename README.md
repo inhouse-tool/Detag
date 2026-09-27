@@ -1,4 +1,4 @@
-# Detag<br><sup><sub>Version 1.0.2.923</sub></sup>
+# Detag<br><sup><sub>Version 1.0.3.927</sub></sup>
 
 AI が出力したムダにデカい HTML ファイルを小さくまとめます.
 
@@ -46,7 +46,7 @@ Google&reg; の [Gemini](https://gemini.google.com/) さんとか,<br>
 
 | AI | サイト |
 | --- | --- |
-| Copilot | https://copilot.microsoft.com/ |
+| Copilot | <s>https://copilot.microsoft.com/</s> → https://copilot.com/ |
 | Gemini web app | https://gemini.google.com/ |
 | *Google* AI Overviews[^1] | https://www.google.com/ |
 
@@ -240,6 +240,36 @@ Microsoft Defender&reg; により「脅威 ( threat )」だと誤判定される
 特に [Copilot](https://copilot.microsoft.com/) との会話はそうなりやすいそうです.
 <sub>( 2026年8月現在 )</sub><br>
 詳しくは[この件に関する Copilot さんからの見解](./docs/Allow.Copilot.md)をご参照ください.
+
+> [!IMPORTANT]
+> 【悲報】<br>
+> [2026年9月25日に刷新された](https://blogs.microsoft.com/blog/2026/09/25/introducing-the-new-copilot-with-home-code-and-autopilot/)
+[Copilot](https://copilot.com/) では,
+HTML 出力
+( その元になっている [DOM](https://ja.wikipedia.org/wiki/Document_Object_Model) 構成 )
+がだいぶ変わりました.
+いちばんインパクトの大きい変更は「Viewport 近傍のみ DOM を生成する」という仕様への変更で,
+ユーザーから見える変化としては「ブラウザで見ている範囲の近傍しか Save できなくなった」ということになります.
+一般的な 1920x1080 のモニタ画面でご覧の場合, 質疑 3～4 往復分ぐらいまでしかファイルに落とせません.
+ブラウザのズームアウト機能を使って 25% ぐらいまで引くと, より多くの質疑がファイルに落とせるようになることからも,
+「見える部分にしか DOM を用意しない」方向に舵を切ったものと思われます.
+>
+> 「そんな軽量化に踏み切るぐらいなら、不要なタグを取っ払って質疑のテキストだけ残してくれよ。」と思うのですが,
+そんな健全な最適化を施すより, 「市販の Virtual Scroll ライブラリを上から被せる方がお手軽なのでは」と
+[Gemini web app さんが解説](./docs/NewCopilot.md)してくれました.
+DOM の削減方法としてはイージーなやりかたなので 
+*Google* AI Overviews や Gemini web app でも導入される可能性があるそうなのですが,
+これをやってしまうとブラウザ内での <kbd>Ctrl</kbd>+<kbd>F</kbd> も効かなくなるので,
+「検索の会社」としてのアイデンティティからは葛藤があるとか.
+>
+> 本アプリのご利用者としては, AI との会話の中で
+「横道にそれたやり取り」や「AI がついたウソを指摘して改めさせた」
+などの不要な部分を編集でカットして,
+>
+> ・あとで見返す価値のある部分だけを資料として残す
+>
+> という方も多いと思いますが,
+この Copilot の刷新はそんな方々には不都合極まりないものとなりました.
 
 <div style="text-align: right;">
 In-house Tool / 家中 徹
