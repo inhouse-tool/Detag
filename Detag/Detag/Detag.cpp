@@ -50,9 +50,15 @@ CDetag::DetagAIs( CString strHTML )
 		strHTML.Delete( 0, x );
 
 		int	xCopilot = strHead.Find( L"https://copilot.microsoft.com" );
+		int	xCopilo2 = strHead.Find( L"https://copilot.com" );
+		int	xCopilo3 = strHead.Find( L"href=\"Copilot" );
 		int	xGemini  = strHead.Find( L"https://gemini.google.com" );
 		int	xGoogle  = strHead.Find( L"https://www.google.com" );
 
+		if	( xCopilo2 >= 0 )
+			xCopilot = xCopilo2;
+		else if	( xCopilo3 >= 0 )
+			xCopilot = xCopilo3;
 		if	( xCopilot < 0 )
 			xCopilot = INT_MAX;
 		if	( xGemini  < 0 )
@@ -182,7 +188,7 @@ CDetag::DetagCopilot( CString strHTML, CString strElement, CString strTag, CStri
 	// When entered into the <main>: Open the output;
 
 	if	( strElement == L"main" ){
-		args.bOut = true;
+	//	args.bOut = true;//OLD
 		args.xNext = SeekTag( strHTML, args.x, L">" );
 	}
 
@@ -196,6 +202,7 @@ CDetag::DetagCopilot( CString strHTML, CString strElement, CString strTag, CStri
 	else if	( strElement == L"h5" ){
 		args.xNext = SeekTag( strHTML, args.x, L">" );
 		TrimCopilot( strOut, false );
+		args.bOut = true;//NEW
 	}
 
 	// <div ...>: Delete the tag.
@@ -206,6 +213,13 @@ CDetag::DetagCopilot( CString strHTML, CString strElement, CString strTag, CStri
 
 		if	( strTag.Find( L"data-ads-rg" ) >= 0 )
 			args.xNext = SkipBranch( strHTML, args.x, L"div" );
+
+		else if	( strTag.Find( L"data-bebop-portal" ) >= 0 ){//NEW
+			int	x = args.x;
+			for	( int i = 0; i < 4; i++ )
+				x = SkipBranch( strHTML, x, L"div" );
+			args.xNext = x;
+		}
 
 		// Others: Leave it.
 
@@ -228,11 +242,19 @@ CDetag::DetagCopilot( CString strHTML, CString strElement, CString strTag, CStri
 		if	( strTag.Find( L"class=\"block\"" ) >= 0 )
 			args.xNext = SeekTag( strHTML, args.x, L"</span>" );
 
+		else if	( strTag.Find( L"data-footnote=\"true\"" ) >= 0 )//NEW
+			args.xNext = SkipBranch( strHTML, args.x, L"span" );
+
 		// Other <span: Leave them.
 
 		else
 			args.xNext = SeekTag( strHTML, args.x, L">" );
 	}
+
+	else if	( strElement == L"section" ){//NEW
+		args.xNext = SkipBranch( strHTML, args.x, L"section" );
+	}
+
 }
 
 void
@@ -442,7 +464,7 @@ CDetag::DetagGoogle( CString strHTML, CString strElement, CString strTag, CStrin
 		}
 
 		// A <div> with <img> in the User's question: Skip the icon of the site.
-		// This insertion is cased by Google AI Overview when URLs are in the query text.
+		// This insertion is caused by Google AI Overview when URLs are in the query text.
 
 		else if	( strHTML.Mid( args.xNext, 4 ) == L"<img" ){
 			int	xH5 = ReverseFind( strOut, L"<h5" );
@@ -1141,6 +1163,8 @@ CDetag::TrimQandA( CString& strOut )
 void
 CDetag::TrimQuery( CString& strQuery )
 {
+	strQuery.Replace( L"<i>\r\n</i>\r\n", L"" );
+
 	// Remove "Searching" in the query text.
 	{
 		int	x1 = SeekTag( strQuery, 0, L"<b>" );
@@ -1219,7 +1243,7 @@ CDetag::IsTagToDelete( CString strHTML, int iIndex, CString strElement )
 			L"input",	L">",
 			L"noscript",	L"</noscript>",
 			L"script",	L"</script>",
-			L"section",	L">",
+	//NEW		L"section",	L">",
 			L"/section",	L">",
 			L"style",	L"</style>",
 			L"svg",		L"</svg>",
